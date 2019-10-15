@@ -6,6 +6,7 @@ const sessions = require('express-session');
 const knexSessionStore = require('connect-session-knex')(sessions);
 const knexConfig = require('./data/db-config');
 const Users = require('./users-router/users-model');
+var cors = require('cors')
 
 const sessionConfig = {
 	name: 'sid',
@@ -25,6 +26,7 @@ const sessionConfig = {
 	})
 };
 
+server.use(cors())
 server.use(sessions(sessionConfig));
 server.use(express.json());
 // server.use('/api', Users)
